@@ -9,6 +9,13 @@ dns.setServers(['8.8.8.8', '1.1.1.1']);
   path:'./.env'
 })
 connectdb()
+.then(()=>{
+  app.listen(process.env.PORT||8000,()=>{
+    console.log(`server is running on port ${process.env.PORT}`)
+  })
+}).catch((err)=>{
+  console.log("Mongo db connection failed",err);
+})
 
 
 // import express from "express"
